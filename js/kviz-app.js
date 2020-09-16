@@ -15,8 +15,20 @@ let currentSlide = 0;
 
 
 // EventListeners
-buttonSubmit.addEventListener("click", submitQuiz);
+
 buttonNext.addEventListener("click", showNextSlide);
+buttonNext.addEventListener("keyup", e => {
+    if(e.key === 'ArrowRight' || e.key === 'Right' || e.key === 'Enter') {
+        showNextSlide();
+    }
+});
+
+buttonSubmit.addEventListener("click", submitQuiz);
+buttonSubmit.addEventListener("keyup", e => {
+    if(e.key === 'Enter') {
+        submitQuiz();
+    }
+});
 
 
 // Polyfill forEach on NodeList
@@ -36,11 +48,10 @@ function createSlider(n) {
   slides[currentSlide].classList.remove('ak-slide-active');
   slides[n].classList.add('ak-slide-active');
   currentSlide = n;
-  if(currentSlide===slides.length-1){
+  if(currentSlide === slides.length - 1){
     buttonNext.style.display = 'none';
     buttonSubmit.classList.remove('ak-submit-disabled');
-  }
-  else{
+  } else {
     buttonNext.style.display = 'inline-flex';
     buttonSubmit.classList.add('ak-submit-disabled');
   }

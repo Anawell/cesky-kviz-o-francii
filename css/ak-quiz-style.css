@@ -257,11 +257,13 @@ ul li {
   transition: all 0.75s ease;
 }
 
-.ak-btn:hover {
+.ak-btn:hover,
+.ak-btn:focus {
   cursor: pointer;
 }
 
-.ak-btn:hover img {
+.ak-btn:hover img,
+.ak-btn:focus img {
   transform: translateX(6px);
 }
 
@@ -314,6 +316,16 @@ ul li {
   width: 100%;
   padding: 5rem;
   background-color: #fff; 
+}
+
+.ak-slide-question,
+.ak-slide-results {
+  display: none;
+}
+
+.ak-slide-question.ak-slide-active,
+.ak-slide-results.ak-slide-active {
+  display: block;
 }
 
 .ak-slide-active {
@@ -384,14 +396,13 @@ ul li {
   right: 1.875rem;
   top: 50%;
   order: 1;
-  visibility: hidden;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0.5);
   width: 2rem;
   height: 2rem;
   cursor: pointer;
 }
 
-.ak-form .input-group label:after {
+.ak-form .input-group label::after {
   content: '';
   position: absolute;
   z-index: 2;
@@ -408,16 +419,18 @@ ul li {
   cursor: pointer; 
 }
 
-.ak-form .input-group .ak-check-label:after {
+.ak-form .input-group .ak-check-label::after {
   border-radius: 0;
 }
 
-.ak-form .input-group input:checked ~ label {
+.ak-form .input-group input:checked ~ label,
+.ak-form .input-group input:focus ~ label {
   background-color: var(--primary-color);
   color: #fff;
 }
 
-.ak-form .input-group input:checked ~ label:after {
+.ak-form .input-group input:checked ~ label::after,
+.ak-form .input-group input:focus ~ label::after {
   border: 3px solid #fff;
   background-color:var(--accent-color);
 }
@@ -437,6 +450,7 @@ ul li {
   overflow: hidden;
   width: 0.1px;
   height: 0.1px;
+  outline: none;
 }
 
 .input-group-img {
@@ -452,9 +466,12 @@ ul li {
 }
 
 .input-group-img input:checked ~ label {
-  opacity:0.5;
+  opacity: 0.5;
 }
 
+.input-group-img input:focus ~ label img {
+  border: 3px solid var(--primary-color);
+}
 
 /* ==========================================================================
    Browser update override
@@ -531,7 +548,8 @@ ul li {
     z-index: 5;
   }
 
-  .ak-slide, .ak-slide-results {
+  .ak-slide, 
+  .ak-slide-results {
     padding: 3rem;
   }
 
