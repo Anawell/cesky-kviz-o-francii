@@ -150,10 +150,13 @@ function displayTheMatchingTrophee(numberOfCorrectAnswers) {
 
   if(numberOfCorrectAnswers > 4) {
     tropheeImg.src = "./img/success.gif";
+    tropheeImg.alt = "Dva muži dělají vítězný tanec";
   } else if(numberOfCorrectAnswers < 0) {
     tropheeImg.src = "./img/nope.gif";
+    tropheeImg.alt = "Muž mává prstem vaším směrem a napodobuje „ne, ne“";
   } else {
     tropheeImg.src = "./img/bof.gif";
+    tropheeImg.alt = "Muž se na vás dívá šokovaně i zoufale";
   }
 
   tropheeImgDisplay.appendChild(tropheeImg);
